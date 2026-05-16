@@ -37,11 +37,14 @@ else
   echo "[INFO] .env already exists, skipping."
 fi
 
-echo "[INFO] Building images and starting containers..."
+echo "[INFO] 构建镜像并启动所有容器..."
+echo "       - sm-server  (NestJS 后端 :3200)"
+echo "       - sm-client  (React 前端)"
+echo "       - sm-nginx   (Nginx 反向代理 :80)"
 $COMPOSE up -d --build
 
 echo ""
 echo "========================================="
-echo "  Deployment Complete!"
-echo "  Visit: http://localhost"
+echo "  部署完成！"
+echo "  访问地址: http://localhost"
 echo "========================================="
