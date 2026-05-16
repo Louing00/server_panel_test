@@ -11,7 +11,7 @@ export class JwtAuthGuard implements CanActivate {
     const token = request.cookies?.jwt;
 
     if (!token) {
-      throw new UnauthorizedException('Not authenticated');
+      throw new UnauthorizedException('未登录，请先登录');
     }
 
     try {
@@ -19,7 +19,7 @@ export class JwtAuthGuard implements CanActivate {
       request['user'] = payload;
       return true;
     } catch {
-      throw new UnauthorizedException('Invalid token');
+      throw new UnauthorizedException('令牌无效或已过期');
     }
   }
 }

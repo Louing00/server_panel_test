@@ -20,7 +20,7 @@ export default function Sidebar() {
             pathname === '/' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
           }`}
         >
-          Servers
+          服务器列表
         </Link>
       </nav>
 

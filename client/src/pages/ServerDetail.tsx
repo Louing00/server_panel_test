@@ -69,13 +69,13 @@ export default function ServerDetail() {
   };
 
   if (!server) {
-    return <div className="flex items-center justify-center h-64 text-gray-500">Loading...</div>;
+    return <div className="flex items-center justify-center h-64 text-gray-500">加载中...</div>;
   }
 
   const tabs: { key: Tab; icon: React.ReactNode; label: string }[] = [
-    { key: 'terminal', icon: <TermIcon className="w-4 h-4" />, label: 'Terminal' },
-    { key: 'files', icon: <FolderOpen className="w-4 h-4" />, label: 'Files' },
-    { key: 'metrics', icon: <Activity className="w-4 h-4" />, label: 'Metrics' },
+    { key: 'terminal', icon: <TermIcon className="w-4 h-4" />, label: '终端' },
+    { key: 'files', icon: <FolderOpen className="w-4 h-4" />, label: '文件' },
+    { key: 'metrics', icon: <Activity className="w-4 h-4" />, label: '监控' },
   ];
 
   return (
@@ -92,8 +92,8 @@ export default function ServerDetail() {
               value={editForm.name}
               onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
             />
-            <button onClick={handleSaveEdit} className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-xs text-white">Save</button>
-            <button onClick={() => setEditMode(false)} className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded text-xs">Cancel</button>
+            <button onClick={handleSaveEdit} className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-xs text-white">保存</button>
+            <button onClick={() => setEditMode(false)} className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded text-xs">取消</button>
           </div>
         ) : (
           <>

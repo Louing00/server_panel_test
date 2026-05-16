@@ -145,7 +145,7 @@ export default function FileExplorer({ serverId }: Props) {
         {error && <p className="text-xs text-red-400 mb-2">{error}</p>}
 
         {loading ? (
-          <p className="text-xs text-gray-500">Loading...</p>
+          <p className="text-xs text-gray-500">加载中...</p>
         ) : (
           <div className="space-y-0.5 max-h-96 overflow-auto">
             {files.map((f) => (
@@ -204,8 +204,8 @@ export default function FileExplorer({ serverId }: Props) {
               <div className="flex gap-2">
                 {editing ? (
                   <>
-                    <button onClick={handleSaveFile} className="bg-blue-600 px-2 py-1 rounded text-xs text-white">Save</button>
-                    <button onClick={() => setEditing(false)} className="bg-gray-700 px-2 py-1 rounded text-xs">Cancel</button>
+                    <button onClick={handleSaveFile} className="bg-blue-600 px-2 py-1 rounded text-xs text-white">保存</button>
+                    <button onClick={() => setEditing(false)} className="bg-gray-700 px-2 py-1 rounded text-xs">取消</button>
                   </>
                 ) : (
                   <button onClick={() => setEditing(true)} className="bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded text-xs">
@@ -232,7 +232,7 @@ export default function FileExplorer({ serverId }: Props) {
           </div>
         ) : (
           <div className="flex items-center justify-center h-full text-gray-600 text-sm">
-            Select a file to view
+            选择文件进行查看
           </div>
         )}
       </div>

@@ -26,7 +26,7 @@ export class TerminalService {
   ): Promise<{ sessionId: string; stream: ClientChannel }> {
     const server = await this.prisma.server.findUnique({ where: { id: serverId } });
     if (!server || server.userId !== userId) {
-      throw new Error('Server not found or access denied');
+      throw new Error('服务器不存在或无权访问');
     }
 
     const sessionId = `${userId}:${serverId}`;
@@ -68,7 +68,7 @@ export class TerminalService {
       });
 
       client.on('error', (err) => {
-        this.logger.error(`SSH connection error: ${err.message}`);
+        this.logger.error(`SSH 连接错误: ${err.message}`);
         reject(err);
       });
 

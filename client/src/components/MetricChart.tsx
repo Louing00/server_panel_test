@@ -22,7 +22,7 @@ export default function MetricChart({ history }: Props) {
   if (!history || history.length === 0) {
     return (
       <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 text-center text-gray-500 text-sm">
-        No metrics history yet. Data is collected every 30 seconds.
+        暂无监控数据，系统每 30 秒采集一次资源指标。
       </div>
     );
   }
@@ -42,7 +42,7 @@ export default function MetricChart({ history }: Props) {
     labels,
     datasets: [
       {
-        label: 'CPU %',
+        label: 'CPU 使用率 %',
         data: cpuData,
         borderColor: '#3b82f6',
         backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -52,7 +52,7 @@ export default function MetricChart({ history }: Props) {
         borderWidth: 1.5,
       },
       {
-        label: 'Memory %',
+        label: '内存使用率 %',
         data: memData,
         borderColor: '#22c55e',
         backgroundColor: 'rgba(34, 197, 94, 0.1)',
@@ -98,7 +98,7 @@ export default function MetricChart({ history }: Props) {
 
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
-      <h3 className="text-sm font-semibold mb-3 text-gray-300">CPU / Memory History</h3>
+      <h3 className="text-sm font-semibold mb-3 text-gray-300">CPU / 内存 历史趋势</h3>
       <div className="h-72">
         <Line data={data} options={options} />
       </div>

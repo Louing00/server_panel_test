@@ -21,7 +21,7 @@ export class MetricsCollector {
       try {
         await this.collectServerMetrics(server);
       } catch (err: any) {
-        this.logger.warn(`Failed to collect metrics for ${server.name}: ${err.message}`);
+        this.logger.warn(`采集指标失败 ${server.name}: ${err.message}`);
       }
     }
   }
@@ -81,7 +81,7 @@ export class MetricsCollector {
                   netTx: netData?.tx ?? null,
                 },
               })
-              .catch((e) => this.logger.error(`Metrics save error: ${e.message}`));
+              .catch((e) => this.logger.error(`指标保存失败: ${e.message}`));
 
             resolve();
           });

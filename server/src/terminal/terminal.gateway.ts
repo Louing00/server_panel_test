@@ -46,7 +46,7 @@ export class TerminalGateway implements OnGatewayDisconnect {
   ) {
     const userId = this.getUserId(client);
     if (!userId) {
-      client.emit('terminal:error', 'Not authenticated');
+      client.emit('terminal:error', '未登录，请先登录');
       return;
     }
 

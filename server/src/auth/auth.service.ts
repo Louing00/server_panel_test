@@ -18,7 +18,7 @@ export class AuthService {
       },
     });
     if (existing) {
-      throw new ConflictException('Username or email already exists');
+      throw new ConflictException('用户名或邮箱已存在');
     }
 
     const password = await bcrypt.hash(dto.password, 12);
@@ -38,12 +38,12 @@ export class AuthService {
       where: { username: dto.username },
     });
     if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException('用户名或密码错误');
     }
 
     const valid = await bcrypt.compare(dto.password, user.password);
     if (!valid) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException('用户名或密码错误');
     }
 
     const payload = { sub: user.id, username: user.username };

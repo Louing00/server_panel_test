@@ -55,7 +55,7 @@ export default function ServerCard({ server, metric, onDelete, onRefresh }: Prop
             </div>
           )}
           {uptimeStr && (
-            <p className="text-xs text-gray-500">Up {uptimeStr}</p>
+            <p className="text-xs text-gray-500">运行 {uptimeStr}</p>
           )}
         </div>
       )}
@@ -65,19 +65,19 @@ export default function ServerCard({ server, metric, onDelete, onRefresh }: Prop
           to={`/servers/${server.id}`}
           className="flex-1 bg-gray-800 hover:bg-gray-700 text-xs text-center px-3 py-1.5 rounded"
         >
-          Open
+          打开
         </Link>
         <button
           onClick={() => onRefresh(server.id)}
           className="text-gray-500 hover:text-white p-1"
-          title="Check health"
+          title="健康检查"
         >
           <RefreshCw className="w-3.5 h-3.5" />
         </button>
         <button
           onClick={() => onDelete(server.id)}
           className="text-gray-500 hover:text-red-400 p-1"
-          title="Delete"
+          title="删除"
         >
           <Trash2 className="w-3.5 h-3.5" />
         </button>

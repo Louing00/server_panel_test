@@ -55,7 +55,7 @@ export default function Terminal({ serverId }: Props) {
     });
 
     socket.on('terminal:close', () => {
-      xtermRef.current?.writeln('\n\r\x1b[33mConnection closed\x1b[0m');
+      xtermRef.current?.writeln('\n\r\x1b[33m连接已关闭\x1b[0m');
       setConnected(false);
     });
 
@@ -71,7 +71,7 @@ export default function Terminal({ serverId }: Props) {
   const handleDisconnect = () => {
     disconnect();
     setConnected(false);
-    xtermRef.current?.writeln('\n\r\x1b[33mDisconnected\x1b[0m');
+      xtermRef.current?.writeln('\n\r\x1b[33m已断开连接\x1b[0m');
   };
 
   useEffect(() => {
@@ -94,9 +94,9 @@ export default function Terminal({ serverId }: Props) {
           }`}
         >
           <Power className="w-3.5 h-3.5" />
-          {connected ? 'Disconnect' : 'Connect'}
+          {connected ? '断开连接' : '连接'}
         </button>
-        {connected && <span className="text-xs text-green-400">Connected</span>}
+        {connected && <span className="text-xs text-green-400">已连接</span>}
         {error && <span className="text-xs text-red-400">{error}</span>}
       </div>
       <div

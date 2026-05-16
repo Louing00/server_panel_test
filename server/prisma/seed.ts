@@ -16,7 +16,7 @@ async function main() {
     },
   });
 
-  console.log('Seed: admin user created (admin / admin123)');
+  console.log('种子数据：管理员用户已创建（admin / admin123）');
 }
 
 main()

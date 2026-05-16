@@ -29,7 +29,7 @@ export class AuthController {
   @Post('logout')
   logout(@Res({ passthrough: true }) res: Response) {
     res.clearCookie('jwt', { path: '/' });
-    return { message: 'Logged out' };
+    return { message: '已退出登录' };
   }
 
   @UseGuards(JwtAuthGuard)

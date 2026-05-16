@@ -36,7 +36,7 @@ export class MetricsService {
   private async verifyOwnership(serverId: string, userId: string) {
     const server = await this.prisma.server.findUnique({ where: { id: serverId } });
     if (!server || server.userId !== userId) {
-      throw new Error('Server not found or access denied');
+      throw new Error('服务器不存在或无权访问');
     }
   }
 }

@@ -9,21 +9,21 @@ export default function MetricBar({ metric }: Props) {
   const items = [
     {
       icon: <Cpu className="w-4 h-4" />,
-      label: 'CPU',
+      label: 'CPU 使用率',
       value: metric.cpuUsage != null ? `${metric.cpuUsage.toFixed(1)}%` : '-',
       pct: metric.cpuUsage ?? 0,
       color: 'bg-blue-500',
     },
     {
       icon: <BarChart3 className="w-4 h-4" />,
-      label: 'Load',
+      label: '系统负载',
       value: metric.loadAvg != null ? metric.loadAvg.toFixed(2) : '-',
       pct: 0,
       color: '',
     },
     {
       icon: <HardDrive className="w-4 h-4" />,
-      label: 'Disk',
+      label: '磁盘使用',
       value:
         metric.diskUsage != null && metric.diskTotal != null
           ? `${toGiB(metric.diskUsage)} / ${toGiB(metric.diskTotal)}`
@@ -33,7 +33,7 @@ export default function MetricBar({ metric }: Props) {
     },
     {
       icon: <Network className="w-4 h-4" />,
-      label: 'Net',
+      label: '网络流量',
       value:
         metric.netRx != null && metric.netTx != null
           ? `↓${formatBytes(metric.netRx)}/s ↑${formatBytes(metric.netTx)}/s`
@@ -43,7 +43,7 @@ export default function MetricBar({ metric }: Props) {
     },
     {
       icon: <Clock className="w-4 h-4" />,
-      label: 'Uptime',
+      label: '运行时间',
       value: metric.uptime != null ? formatUptime(metric.uptime) : '-',
       pct: 0,
       color: '',

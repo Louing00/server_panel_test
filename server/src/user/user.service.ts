@@ -10,12 +10,12 @@ export class UserService {
       where: { id: userId },
       select: { id: true, username: true, email: true, createdAt: true },
     });
-    if (!user) throw new NotFoundException('User not found');
+    if (!user) throw new NotFoundException('用户不存在');
     return user;
   }
 
   async deleteAccount(userId: string) {
     await this.prisma.user.delete({ where: { id: userId } });
-    return { message: 'Account deleted' };
+    return { message: '账号已删除' };
   }
 }

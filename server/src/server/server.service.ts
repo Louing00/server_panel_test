@@ -69,8 +69,8 @@ export class ServerService {
 
   async update(userId: string, id: string, dto: UpdateServerDto) {
     const server = await this.prisma.server.findUnique({ where: { id } });
-    if (!server) throw new NotFoundException('Server not found');
-    if (server.userId !== userId) throw new ForbiddenException('Access denied');
+    if (!server) throw new NotFoundException('服务器不存在');
+    if (server.userId !== userId) throw new ForbiddenException('无权访问此服务器');
 
     const data: any = { ...dto };
     if (dto.sshPassword) {
@@ -85,17 +85,17 @@ export class ServerService {
 
   async delete(userId: string, id: string) {
     const server = await this.prisma.server.findUnique({ where: { id } });
-    if (!server) throw new NotFoundException('Server not found');
-    if (server.userId !== userId) throw new ForbiddenException('Access denied');
+    if (!server) throw new NotFoundException('服务器不存在');
+    if (server.userId !== userId) throw new ForbiddenException('无权访问此服务器');
 
     await this.prisma.server.delete({ where: { id } });
-    return { message: 'Server deleted' };
+    return { message: '服务器已删除' };
   }
 
   async checkHealth(userId: string, id: string) {
     const server = await this.prisma.server.findUnique({ where: { id } });
-    if (!server) throw new NotFoundException('Server not found');
-    if (server.userId !== userId) throw new ForbiddenException('Access denied');
+    if (!server) throw new NotFoundException('服务器不存在');
+    if (server.userId !== userId) throw new ForbiddenException('无权访问此服务器');
 
     const status = await this.testConnection(server.host, server.port);
 

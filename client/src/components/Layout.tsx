@@ -8,7 +8,7 @@ export default function Layout() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-950 text-gray-400">
-        Loading...
+        加载中...
       </div>
     );
   }

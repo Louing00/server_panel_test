@@ -81,13 +81,13 @@ export default function Dashboard() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Servers</h1>
+        <h1 className="text-2xl font-bold">服务器列表</h1>
         <button
           onClick={() => setShowAdd(!showAdd)}
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded flex items-center gap-2 text-sm"
         >
           <Plus className="w-4 h-4" />
-          Add Server
+          添加服务器
         </button>
       </div>
 
@@ -96,26 +96,26 @@ export default function Dashboard() {
           <div className="grid grid-cols-2 gap-3">
             <input
               className="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
-              placeholder="Name"
+              placeholder="名称"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
             <input
               className="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
-              placeholder="Host (IP/Domain)"
+              placeholder="主机地址（IP/域名）"
               value={form.host}
               onChange={(e) => setForm({ ...form, host: e.target.value })}
             />
             <input
               type="number"
               className="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
-              placeholder="Port"
+              placeholder="端口号"
               value={form.port}
               onChange={(e) => setForm({ ...form, port: Number(e.target.value) })}
             />
             <input
               className="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
-              placeholder="SSH Username"
+              placeholder="SSH 用户名"
               value={form.sshUsername}
               onChange={(e) => setForm({ ...form, sshUsername: e.target.value })}
             />
@@ -124,21 +124,21 @@ export default function Dashboard() {
               value={form.authType}
               onChange={(e) => setForm({ ...form, authType: e.target.value })}
             >
-              <option value="password">Password</option>
-              <option value="key">Private Key</option>
+              <option value="password">密码登录</option>
+              <option value="key">密钥登录</option>
             </select>
             {form.authType === 'password' ? (
               <input
                 type="password"
                 className="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
-                placeholder="SSH Password"
+                placeholder="SSH 密码"
                 value={form.sshPassword}
                 onChange={(e) => setForm({ ...form, sshPassword: e.target.value })}
               />
             ) : (
               <textarea
                 className="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500 col-span-1"
-                placeholder="Private Key"
+                placeholder="SSH 私钥"
                 rows={3}
                 value={form.sshKey}
                 onChange={(e) => setForm({ ...form, sshKey: e.target.value })}
@@ -147,10 +147,10 @@ export default function Dashboard() {
           </div>
           <div className="flex gap-2">
             <button onClick={handleAdd} className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm text-white">
-              Save
+              保存
             </button>
             <button onClick={() => setShowAdd(false)} className="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded text-sm">
-              Cancel
+              取消
             </button>
           </div>
         </div>
@@ -158,8 +158,8 @@ export default function Dashboard() {
 
       {servers.length === 0 ? (
         <div className="text-center text-gray-500 py-20">
-          <p className="text-lg">No servers added yet</p>
-          <p className="text-sm mt-2">Click "Add Server" to get started</p>
+          <p className="text-lg">暂无服务器</p>
+          <p className="text-sm mt-2">点击"添加服务器"开始使用</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

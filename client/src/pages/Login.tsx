@@ -23,7 +23,7 @@ export default function Login() {
       }
       navigate('/');
     } catch (err: any) {
-      setError(err.response?.data?.message || 'An error occurred');
+      setError(err.response?.data?.message || '请求失败，请重试');
     }
   };
 
@@ -37,7 +37,7 @@ export default function Login() {
 
         <form onSubmit={handleSubmit} className="bg-gray-900 rounded-lg p-6 space-y-4 border border-gray-800">
           <h2 className="text-lg font-semibold text-center">
-            {mode === 'login' ? 'Login' : 'Register'}
+            {mode === 'login' ? '登录' : '注册'}
           </h2>
 
           {error && (
@@ -47,7 +47,7 @@ export default function Login() {
           )}
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Username</label>
+            <label className="block text-sm text-gray-400 mb-1">用户名</label>
             <input
               type="text"
               value={username}
@@ -60,7 +60,7 @@ export default function Login() {
 
           {mode === 'register' && (
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Email</label>
+              <label className="block text-sm text-gray-400 mb-1">邮箱</label>
               <input
                 type="email"
                 value={email}
@@ -72,7 +72,7 @@ export default function Login() {
           )}
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Password</label>
+            <label className="block text-sm text-gray-400 mb-1">密码</label>
             <input
               type="password"
               value={password}
@@ -87,17 +87,17 @@ export default function Login() {
             className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded px-4 py-2 flex items-center justify-center gap-2 font-medium"
           >
             <KeyRound className="w-4 h-4" />
-            {mode === 'login' ? 'Login' : 'Register'}
+            {mode === 'login' ? '登录' : '注册'}
           </button>
 
           <p className="text-center text-sm text-gray-500">
-            {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}{' '}
+            {mode === 'login' ? '没有账号？' : '已有账号？'}{' '}
             <button
               type="button"
               onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); }}
               className="text-blue-400 hover:underline"
             >
-              {mode === 'login' ? 'Register' : 'Login'}
+              {mode === 'login' ? '去注册' : '去登录'}
             </button>
           </p>
         </form>

@@ -23,7 +23,7 @@ export class FileService {
   private async getSftpClient(serverId: string, userId: string): Promise<{ sftp: SFTPWrapper; client: Client }> {
     const server = await this.prisma.server.findUnique({ where: { id: serverId } });
     if (!server || server.userId !== userId) {
-      throw new ForbiddenException('Server not found or access denied');
+      throw new ForbiddenException('服务器不存在或无权访问');
     }
 
     const client = new Client();
