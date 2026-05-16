@@ -30,9 +30,7 @@ npm run lint          # ESLint 检查
 
 ### Docker
 ```bash
-./deploy.sh                      # 本地测试（无域名）
-./deploy.sh -d DOMAIN            # 绑定域名
-./deploy.sh -d DOMAIN --ssl --email EMAIL  # 绑定域名 + HTTPS
+./deploy.sh                      # 交互式部署，按提示输入域名等信息
 docker compose up -d --build
 docker compose down
 ```

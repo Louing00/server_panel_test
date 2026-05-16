@@ -83,18 +83,10 @@ npm run dev                 # http://localhost:5173
 
 ```bash
 chmod +x deploy.sh
-
-# 本地测试（无域名，访问 http://localhost）
 ./deploy.sh
-
-# 绑定域名（HTTP）
-./deploy.sh -d panel.example.com
-
-# 绑定域名 + HTTPS 证书（Let's Encrypt 自动续期）
-./deploy.sh -d panel.example.com --ssl --email admin@example.com
 ```
 
-部署脚本会自动完成：
+运行后按提示输入域名、是否启用 HTTPS 等信息，脚本会自动完成：
 1. 生成随机密钥写入 `.env`
 2. 根据域名生成 Nginx 配置
 3. 构建镜像并启动 server + client + nginx 三个容器
