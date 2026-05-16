@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  servers   Server[]
+}
+
+model Server {
+  id            String         @id @default(uuid())
+  name          String
+  host          String
+  port          Int            @default(22)
+  sshUsername   String
+  authType      String         @default("password")
+  sshPassword   String?
+  sshKey        String?
+  status        String         @default("unknown")
+  lastCheckedAt DateTime?
+  userId        String
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  metrics       ServerMetric[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model ServerMetric {
+  id         String   @id @default(uuid())
+  serverId   String
+  server     Server   @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  cpuUsage   Float?
+  memUsage   Float?
+  memTotal   Float?
+  diskUsage  Float?
+  diskTotal  Float?
+  netRx      Float?
+  netTx      Float?
+  loadAvg    Float?
+  uptime     Int?
+  recordedAt DateTime @default(now())
+
+  @@index([serverId, recordedAt])
+}
