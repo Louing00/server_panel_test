@@ -135,7 +135,13 @@ ServerManager/
 ├── deploy.sh                  # 一键部署脚本
 ├── docker-compose.yml         # Docker Compose 编排
 ├── .env.example               # 环境变量示例
-├── docker/nginx/nginx.conf    # Nginx 反向代理配置
+├── docker/nginx/nginx.conf    # Nginx 反向代理配置（ServerPanel 内置用）
+│   └── ...
+├── nginx/                      # 独立 Nginx 部署工具
+│   ├── deploy-nginx.sh         # Nginx 一键部署脚本
+│   ├── docker-compose.yml      # Nginx + Certbot 服务
+│   ├── nginx.conf              # Nginx 主配置
+│   └── conf.d/                 # 站点配置模板
 ├── server/                    # NestJS 后端
 │   ├── prisma/schema.prisma   # 数据库模型
 │   └── src/
@@ -171,6 +177,18 @@ ServerManager/
 | `DATABASE_URL` | SQLite 数据库路径 |
 | `JWT_SECRET` | JWT 签名密钥 |
 | `ENCRYPTION_KEY` | SSH 凭证 AES-256 加密密钥 |
+
+## 独立 Nginx 部署
+
+项目附带独立的 Nginx 一键部署工具，可用于任意项目的反向代理：
+
+```bash
+cd nginx
+chmod +x deploy-nginx.sh
+./deploy-nginx.sh
+```
+
+按提示输入域名、后端地址、是否启用 HTTPS，自动完成 Nginx + Let's Encrypt 证书部署。
 
 ## 许可证
 

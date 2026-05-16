@@ -9,3 +9,10 @@ data/
 *.log
 .DS_Store
 coverage/
+
+# nginx 运行时文件
+nginx/ssl/
+nginx/www/
+nginx/log/
+nginx/conf.d/*.conf
+!nginx/conf.d/default.conf.template
